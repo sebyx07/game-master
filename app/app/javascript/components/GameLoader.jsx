@@ -1,10 +1,10 @@
-import React from "react";
-import Layout from "./game-loader/layout";
+import Layout from './game-loader/layout';
+import React from 'react';
 
-export default function GameLoader({game}){
-  return(
+export default function GameLoader({game}) {
+  return (
     <div>
       <Layout game={game}/>
     </div>
-  )
+  );
 }
