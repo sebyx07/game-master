@@ -1,0 +1,7 @@
+.build/.db
+.build/.bundle-cache-dir
+.build/.pip-dir
+.idea/
+.rake_tasks~
+.rakeTasks
+clients/ruby

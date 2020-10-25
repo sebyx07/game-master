@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 1234
+  host: <%= ENV["DOCKER"].present? ? "postgres" : "localhost" %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: app_development
+test:
+  <<: *default
+  database: app_test<%= ENV['TEST_ENV_NUMBER'] %>
+
+production:
+  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: 50

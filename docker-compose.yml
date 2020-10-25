@@ -1,0 +1,28 @@
+app:
+  tty: true
+  stdin_open: true
+  command: bash start.sh
+  build: "./app"
+  links:
+    - postgres
+  volumes:
+    - ./app:/app
+    - ~/.bash_history:/root/.bash_history
+    - .build/.bundle-cache-dir/app:/usr/local/bundle/
+    - .build/.pip-dir:/usr/local/lib/python3.7/dist-packages
+  ports:
+    - "3000:3000"
+    - "3035:3035"
+  environment:
+    - RUBYOPT=-W:no-deprecated -W:no-experimental
+    - DISCORDRB_NONACL=true
+    - DOCKER=true
+
+postgres:
+  image: postgres:12-alpine
+  volumes:
+    - .build/.db:/var/lib/postgresql/data
+  ports:
+    - "5432:5432"
+  environment:
+    - POSTGRES_PASSWORD=1234

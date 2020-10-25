@@ -1,0 +1,4 @@
+<%= react_component "GameLoader", {
+    game: @game.as_json(only: [:title, :title_url, :game_type, :iframe_url]).deep_transform_keys! { |key| key.camelize(:lower) } }
+%>
+
